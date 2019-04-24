@@ -6,12 +6,11 @@ import java.util.List;
 import java.util.Random;
 
 public class Tablero {
-
+    Colores colores = new Colores();
     Random random = new Random();
     int[][] casillas = {{1,1,2,2},{3,3,4,4},{5,5,6,6},{7,7,8,8}};
-    char casillasO[][] = new char[4][4];
-    int f,c;
-    int cont=1;
+    int numeroColores, numeroTotalColores;
+    int colorBlue, colorRed, colorBlack, colorCyan, colorGreen, colorPurple, colorWhite, colorYellow;
 
     void desordenar(){
         for (int i = 0; i <casillas.length ; i++) {
@@ -32,49 +31,154 @@ public class Tablero {
         }
     }
 
-    void mostrarTablero(){
+    void mostrar(){
         for (int i = 0; i <casillas.length ; i++) {
             for (int j = 0; j <casillas.length ; j++) {
-                if(casillas[i][j]==1){
-                    System.out.print("\033[34m*\033[0m");
-                } else if(casillas[i][j]==2){
-                    System.out.print("\033[31m*\033[0m");
-                } else if(casillas[i][j]==3){
-                    System.out.print("\033[32m*\033[0m");
-                } else if(casillas[i][j]==4){
-                    System.out.print("\033[37m*\033[0m");
-                } else if(casillas[i][j]==5){
-                    System.out.print("\033[33m*\033[0m");
-                } else if(casillas[i][j]==6){
-                    System.out.print("\033[30m*\033[0m");
-                } else if(casillas[i][j]==7){
-                    System.out.print("\033[36m*\033[0m");
-                } else if(casillas[i][j]==8){
-                    System.out.print("\033[35m*\033[0m");
+                if(casillas[i][j]==11){
+                    System.out.print(colores.BLUE + "*" + colores.RESET);
+                    numeroColores++;
+                } else if(casillas[i][j]==22){
+                    System.out.print(colores.RED + "*" + colores.RESET);
+                    numeroColores++;
+                } else if(casillas[i][j]==33){
+                    System.out.print(colores.BLACK + "*" + colores.RESET);
+                    numeroColores++;
+                } else if(casillas[i][j]==44){
+                    System.out.print(colores.CYAN + "*" + colores.RESET);
+                    numeroColores++;
+                } else if(casillas[i][j]==55){
+                    System.out.print(colores.GREEN + "*" + colores.RESET);
+                    numeroColores++;
+                } else if(casillas[i][j]==66){
+                    System.out.print(colores.PURPLE + "*" + colores.RESET);
+                    numeroColores++;
+                } else if(casillas[i][j]==77){
+                    System.out.print(colores.WHITE + "*" + colores.RESET);
+                    numeroColores++;
+                } else if(casillas[i][j]==88){
+                    System.out.print(colores.YELLOW + "*" + colores.RESET);
+                    numeroColores++;
+                } else {
+                    System.out.print("*");
                 }
             }
             System.out.println();
         }
     }
 
-    void verCasilla(Jugador jugador){
+    void comprobarCasilla(Jugador jugador){
         if(casillas[jugador.fila][jugador.columna] == 1){
-            System.out.print("\033[34m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 11;
         }
         else if(casillas[jugador.fila][jugador.columna]==2){
-            System.out.print("\033[31m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 22;
         } else if(casillas[jugador.fila][jugador.columna]==3){
-            System.out.print("\033[32m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 33;
         } else if(casillas[jugador.fila][jugador.columna]==4){
-            System.out.print("\033[37m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 44;
         } else if(casillas[jugador.fila][jugador.columna]==5){
-            System.out.print("\033[33m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 55;
         } else if(casillas[jugador.fila][jugador.columna]==6){
-            System.out.print("\033[30m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 66;
         } else if(casillas[jugador.fila][jugador.columna]==7){
-            System.out.print("\033[36m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 77;
         } else if(casillas[jugador.fila][jugador.columna]==8){
-            System.out.print("\033[35m*\033[0m");
+            casillas[jugador.fila][jugador.columna] = 88;
+        }
+    }
+
+    void comprobarCasillaRepetida(Jugador jugador){
+        if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] == 1){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 11;
+        }
+        else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==2){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 22;
+        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==3){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 33;
+        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==4){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 44;
+        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==5){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 55;
+        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==6){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 66;
+        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==7){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 77;
+        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==8){
+            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 88;
+        }
+    }
+
+    void quitarColoresNoAdivinados(){
+        for (int i = 0; i <casillas.length ; i++) {
+            for (int j = 0; j <casillas.length ; j++) {
+                if(casillas[i][j]==11){
+                    colorBlue++;
+                } else if(casillas[i][j]==22){
+                    colorRed++;
+                } else if(casillas[i][j]==33){
+                    colorBlack++;
+                } else if(casillas[i][j]==44){
+                    colorCyan++;
+                } else if(casillas[i][j]==55){
+                    colorGreen++;
+                } else if(casillas[i][j]==66){
+                    colorPurple++;
+                } else if(casillas[i][j]==77){
+                    colorWhite++;
+                } else if(casillas[i][j]==88){
+                    colorYellow++;
+                }
+            }
+        }
+
+        for (int i = 0; i <casillas.length ; i++) {
+            for (int j = 0; j <casillas.length ; j++) {
+                if(casillas[i][j]==11){
+                    if(colorBlue<2){
+                        casillas[i][i]=1;
+                    }
+                } else if(casillas[i][j]==22){
+                    if(colorRed<2){
+                        casillas[i][i]=2;
+                    }
+                } else if(casillas[i][j]==33){
+                    if(colorBlack<2){
+                        casillas[i][i]=3;
+                    }
+                } else if(casillas[i][j]==44){
+                    if(colorCyan<2){
+                        casillas[i][i]=4;
+                    }
+                } else if(casillas[i][j]==55){
+                    if(colorGreen<2){
+                        casillas[i][i]=5;
+                    }
+                } else if(casillas[i][j]==66){
+                    if(colorPurple<2){
+                        casillas[i][i]=6;
+                    }
+                } else if(casillas[i][j]==77){
+                    if(colorWhite<2){
+                        casillas[i][i]=7;
+                    }
+                } else if(casillas[i][j]==88){
+                    if(colorYellow<2){
+                        casillas[i][i]=8;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    void comprobarTotalColores(){
+        if(numeroColores==numeroTotalColores){
+            System.out.println();
+            System.out.println();
+            System.out.println("---------------");
+            System.out.println("¡¡FELICIDADES!!");
+            System.out.print("HAS GANADO ");
         }
     }
 

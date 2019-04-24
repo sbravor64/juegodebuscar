@@ -8,7 +8,7 @@ public class Main {
         Instrucciones instrucciones = new Instrucciones();
         instrucciones.mostrar();
 
-        // creación de Jugador de jugadores
+        // creación de Jugador
         Jugador jugador = new Jugador();
         jugador.ponerNombre();
 
@@ -19,7 +19,27 @@ public class Main {
         //tablero.añadirColoresIguales();
 
         //Comienza el juego
-        jugador.introducirPosicion();
-        tablero.verCasilla(jugador);
+
+        int intento1,intento2;
+        while(true){
+            System.out.println("hola");
+            tablero.mostrar();
+            do {
+                jugador.introducirPosicion();
+                tablero.comprobarCasilla(jugador);
+                tablero.mostrar();
+                jugador.introducirPosicionColorRepetido();
+                tablero.comprobarCasillaRepetida(jugador);
+                tablero.mostrar();
+
+                // guardar las posiciones del primer intento y del segundo.
+                intento1=tablero.casillas[jugador.fila][jugador.columna];
+                intento2=tablero.casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido];
+
+            } while(intento1==intento2);
+
+            tablero.quitarColoresNoAdivinados();
+        }
+
     }
 }
