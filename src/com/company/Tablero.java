@@ -32,7 +32,7 @@ public class Tablero {
         }
     }
 
-    void añadirColoresIguales(){
+    void mostrarTablero(){
         for (int i = 0; i <casillas.length ; i++) {
             for (int j = 0; j <casillas.length ; j++) {
                 if(casillas[i][j]==1){
