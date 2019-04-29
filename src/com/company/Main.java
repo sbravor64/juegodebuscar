@@ -21,24 +21,32 @@ public class Main {
         //Comienza el juego
 
         int intento1,intento2;
+        tablero.mostrar();
         while(true){
-            System.out.println("hola");
+
+            jugador.introducirPosicion();
+            int fila=jugador.fila;
+            int columna=jugador.columna;
+
+            tablero.comprobarCasilla(jugador);
             tablero.mostrar();
-            do {
-                jugador.introducirPosicion();
-                tablero.comprobarCasilla(jugador);
+
+            jugador.introducirPosicion();
+            int filaColorRepetido=jugador.fila;
+            int columnaColorRepetido=jugador.columna;
+
+            tablero.comprobarCasilla(jugador);
+            tablero.mostrar();
+
+            if(tablero.casillas[fila][columna]==tablero.casillas[filaColorRepetido][columnaColorRepetido]){
+                jugador.acierta();
+                tablero.comprobarTotalColores();
+            } else {
+                jugador.falla();
+                tablero.quitarColoresNoAdivinados();
                 tablero.mostrar();
-                jugador.introducirPosicionColorRepetido();
-                tablero.comprobarCasillaRepetida(jugador);
-                tablero.mostrar();
+            }
 
-                // guardar las posiciones del primer intento y del segundo.
-                intento1=tablero.casillas[jugador.fila][jugador.columna];
-                intento2=tablero.casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido];
-
-            } while(intento1==intento2);
-
-            tablero.quitarColoresNoAdivinados();
         }
 
     }

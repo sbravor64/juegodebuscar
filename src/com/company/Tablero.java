@@ -87,28 +87,9 @@ public class Tablero {
         }
     }
 
-    void comprobarCasillaRepetida(Jugador jugador){
-        if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] == 1){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 11;
-        }
-        else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==2){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 22;
-        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==3){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 33;
-        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==4){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 44;
-        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==5){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 55;
-        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==6){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 66;
-        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==7){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 77;
-        } else if(casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido]==8){
-            casillas[jugador.filaColorRepetido][jugador.columnaColorRepetido] = 88;
-        }
-    }
-
     void quitarColoresNoAdivinados(){
+
+
         for (int i = 0; i <casillas.length ; i++) {
             for (int j = 0; j <casillas.length ; j++) {
                 if(casillas[i][j]==11){
@@ -135,35 +116,35 @@ public class Tablero {
             for (int j = 0; j <casillas.length ; j++) {
                 if(casillas[i][j]==11){
                     if(colorBlue<2){
-                        casillas[i][i]=1;
+                        casillas[i][j]=1;
                     }
                 } else if(casillas[i][j]==22){
                     if(colorRed<2){
-                        casillas[i][i]=2;
+                        casillas[i][j]=2;
                     }
                 } else if(casillas[i][j]==33){
                     if(colorBlack<2){
-                        casillas[i][i]=3;
+                        casillas[i][j]=3;
                     }
                 } else if(casillas[i][j]==44){
                     if(colorCyan<2){
-                        casillas[i][i]=4;
+                        casillas[i][j]=4;
                     }
                 } else if(casillas[i][j]==55){
                     if(colorGreen<2){
-                        casillas[i][i]=5;
+                        casillas[i][j]=5;
                     }
                 } else if(casillas[i][j]==66){
                     if(colorPurple<2){
-                        casillas[i][i]=6;
+                        casillas[i][j]=6;
                     }
                 } else if(casillas[i][j]==77){
                     if(colorWhite<2){
-                        casillas[i][i]=7;
+                        casillas[i][j]=7;
                     }
                 } else if(casillas[i][j]==88){
                     if(colorYellow<2){
-                        casillas[i][i]=8;
+                        casillas[i][j]=8;
                     }
                 }
             }

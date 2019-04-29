@@ -26,14 +26,16 @@ class Jugador {
 
     }
 
-    void introducirPosicionColorRepetido(){
+    void acierta(){
+        System.out.println();
+        System.out.println("¡HAS ACERTADO!");
+        System.out.println("Sigue intentandolo hasta conseguir todos los colores");
+    }
 
-        System.out.println(nick + ", intenta adivinar en que posición se encuentra el color");
-        System.out.print("FILA: ");
-        filaColorRepetido = teclado.nextInt() -1;
-        System.out.print("COLUMNA: ");
-        columnaColorRepetido = teclado.nextInt()-1;
-
+    void falla(){
+        System.out.println();
+        System.out.println("¡HAS FALLADO!");
+        System.out.println("Sigue intentandolo hasta conseguir todos los colores");
     }
 
 
