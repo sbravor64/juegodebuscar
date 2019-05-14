@@ -18,7 +18,7 @@ class Jugador {
 
     void introducirPosicion(){
 
-        System.out.println(nick + ", escribe la posición del color que quieres adivinar");
+        System.out.println(nick + ", escribe la posición");
         System.out.print("FILA: ");
         fila = teclado.nextInt() -1;
         System.out.print("COLUMNA: ");

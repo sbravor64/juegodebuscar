@@ -29,6 +29,8 @@ public class Tablero {
             }
             System.out.println();
         }
+
+        System.out.println("-----");
     }
 
     void mostrar(){
@@ -87,11 +89,10 @@ public class Tablero {
         }
     }
 
-    void quitarColoresNoAdivinados(){
-
+    void quitarColoresNoAdivinados() {
 
         for (int i = 0; i <casillas.length ; i++) {
-            for (int j = 0; j <casillas.length ; j++) {
+            for (int j = 0; j <casillas[i].length ; j++) {
                 if(casillas[i][j]==11){
                     colorBlue++;
                 } else if(casillas[i][j]==22){
@@ -113,38 +114,46 @@ public class Tablero {
         }
 
         for (int i = 0; i <casillas.length ; i++) {
-            for (int j = 0; j <casillas.length ; j++) {
+            for (int j = 0; j <casillas[i].length ; j++) {
                 if(casillas[i][j]==11){
                     if(colorBlue<2){
                         casillas[i][j]=1;
+                        colorBlue=0;
                     }
                 } else if(casillas[i][j]==22){
                     if(colorRed<2){
                         casillas[i][j]=2;
+                        colorRed=0;
                     }
                 } else if(casillas[i][j]==33){
                     if(colorBlack<2){
                         casillas[i][j]=3;
+                        colorBlack=0;
                     }
                 } else if(casillas[i][j]==44){
                     if(colorCyan<2){
                         casillas[i][j]=4;
+                        colorCyan=0;
                     }
                 } else if(casillas[i][j]==55){
                     if(colorGreen<2){
                         casillas[i][j]=5;
+                        colorGreen=0;
                     }
                 } else if(casillas[i][j]==66){
                     if(colorPurple<2){
                         casillas[i][j]=6;
+                        colorPurple=0;
                     }
                 } else if(casillas[i][j]==77){
                     if(colorWhite<2){
                         casillas[i][j]=7;
+                        colorWhite=0;
                     }
                 } else if(casillas[i][j]==88){
                     if(colorYellow<2){
                         casillas[i][j]=8;
+                        colorYellow=0;
                     }
                 }
             }

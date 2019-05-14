@@ -1,8 +1,11 @@
 package com.company;
 
+import java.io.IOException;
+import java.time.temporal.TemporalAccessor;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         // Mensaje de Binvenida
         Instrucciones instrucciones = new Instrucciones();
@@ -18,29 +21,47 @@ public class Main {
         tablero.desordenar();
         //tablero.añadirColoresIguales();
 
-        //Comienza el juego
+        //BORRAR CONSOLA
+        LimpiarConsola limpiar = new LimpiarConsola();
+        //TIEMPO
+        Tiempo time = new Tiempo();
 
-        int intento1,intento2;
+
+        //Comienza el juego
+        int fila,columna,filaColorRepetido,columnaColorRepetido;
         tablero.mostrar();
         while(true){
 
-            jugador.introducirPosicion();
-            int fila=jugador.fila;
-            int columna=jugador.columna;
+            do{
+                jugador.introducirPosicion();
+                fila=jugador.fila;
+                columna=jugador.columna;
+            }while(tablero.casillas[fila][columna]>8
+                    || fila<0 || fila>4
+                    || columna<0 || columna>4);
 
             tablero.comprobarCasilla(jugador);
             tablero.mostrar();
 
-            jugador.introducirPosicion();
-            int filaColorRepetido=jugador.fila;
-            int columnaColorRepetido=jugador.columna;
+            do{
+                jugador.introducirPosicion();
+                filaColorRepetido=jugador.fila;
+                columnaColorRepetido=jugador.columna;
+            }while(tablero.casillas[filaColorRepetido][columnaColorRepetido]>8
+                    || filaColorRepetido<0 || filaColorRepetido>4
+                    || columnaColorRepetido<0 ||columnaColorRepetido>4);
 
             tablero.comprobarCasilla(jugador);
             tablero.mostrar();
 
-            if(tablero.casillas[fila][columna]==tablero.casillas[filaColorRepetido][columnaColorRepetido]){
+            time.wait(2);
+            limpiar.clear();
+
+            if(tablero.casillas[fila][columna]==tablero.casillas[filaColorRepetido][columnaColorRepetido]
+                    && fila!=filaColorRepetido && columna!=columnaColorRepetido){
                 jugador.acierta();
                 tablero.comprobarTotalColores();
+                tablero.mostrar();
             } else {
                 jugador.falla();
                 tablero.quitarColoresNoAdivinados();
