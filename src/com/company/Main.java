@@ -36,9 +36,7 @@ public class Main {
                 jugador.introducirPosicion();
                 fila=jugador.fila;
                 columna=jugador.columna;
-            }while(tablero.casillas[fila][columna]>8
-                    || fila<0 || fila>4
-                    || columna<0 || columna>4);
+            }while(tablero.casillas[fila][columna]>8);
 
             tablero.comprobarCasilla(jugador);
             tablero.mostrar();
@@ -47,9 +45,7 @@ public class Main {
                 jugador.introducirPosicion();
                 filaColorRepetido=jugador.fila;
                 columnaColorRepetido=jugador.columna;
-            }while(tablero.casillas[filaColorRepetido][columnaColorRepetido]>8
-                    || filaColorRepetido<0 || filaColorRepetido>4
-                    || columnaColorRepetido<0 ||columnaColorRepetido>4);
+            }while(tablero.casillas[filaColorRepetido][columnaColorRepetido]>8);
 
             tablero.comprobarCasilla(jugador);
             tablero.mostrar();
@@ -57,10 +53,13 @@ public class Main {
             time.wait(2);
             limpiar.clear();
 
-            if(tablero.casillas[fila][columna]==tablero.casillas[filaColorRepetido][columnaColorRepetido]
-                    && fila!=filaColorRepetido && columna!=columnaColorRepetido){
-                jugador.acierta();
+            if(tablero.casillas[fila][columna]==tablero.casillas[filaColorRepetido][columnaColorRepetido]){
                 tablero.comprobarTotalColores();
+                if(tablero.numeroColores==tablero.numeroTotalColores){
+                    System.out.println(jugador.nick+ "!!");
+                    System.exit(0);
+                }
+                jugador.acierta();
                 tablero.mostrar();
             } else {
                 jugador.falla();

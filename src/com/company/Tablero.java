@@ -7,9 +7,10 @@ import java.util.Random;
 
 public class Tablero {
     Colores colores = new Colores();
+    Jugador jugador = new Jugador();
     Random random = new Random();
     int[][] casillas = {{1,1,2,2},{3,3,4,4},{5,5,6,6},{7,7,8,8}};
-    int numeroColores, numeroTotalColores;
+    int numeroColores, numeroTotalColores=8;
     int colorBlue, colorRed, colorBlack, colorCyan, colorGreen, colorPurple, colorWhite, colorYellow;
 
     void desordenar(){
@@ -38,28 +39,20 @@ public class Tablero {
             for (int j = 0; j <casillas.length ; j++) {
                 if(casillas[i][j]==11){
                     System.out.print(colores.BLUE + "*" + colores.RESET);
-                    numeroColores++;
                 } else if(casillas[i][j]==22){
                     System.out.print(colores.RED + "*" + colores.RESET);
-                    numeroColores++;
                 } else if(casillas[i][j]==33){
                     System.out.print(colores.BLACK + "*" + colores.RESET);
-                    numeroColores++;
                 } else if(casillas[i][j]==44){
                     System.out.print(colores.CYAN + "*" + colores.RESET);
-                    numeroColores++;
                 } else if(casillas[i][j]==55){
                     System.out.print(colores.GREEN + "*" + colores.RESET);
-                    numeroColores++;
                 } else if(casillas[i][j]==66){
                     System.out.print(colores.PURPLE + "*" + colores.RESET);
-                    numeroColores++;
                 } else if(casillas[i][j]==77){
                     System.out.print(colores.WHITE + "*" + colores.RESET);
-                    numeroColores++;
                 } else if(casillas[i][j]==88){
                     System.out.print(colores.YELLOW + "*" + colores.RESET);
-                    numeroColores++;
                 } else {
                     System.out.print("*");
                 }
@@ -163,6 +156,8 @@ public class Tablero {
 
 
     void comprobarTotalColores(){
+        numeroColores++;
+        String nombre = jugador.nick;
         if(numeroColores==numeroTotalColores){
             System.out.println();
             System.out.println();
